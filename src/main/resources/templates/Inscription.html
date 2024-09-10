@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <span th:replace="~{/composant/bootstrapImports :: bootstrapImports}"></span>
+
+</head>
+<body>
+<header>
+    <span th:replace="~{/composant/buttonAccueil :: buttonAccueil}"></span>
+
+
+</header>
+<!-- formulaire et redirection vers la liste -->
+<form action="/inscription/newEtudiant" method="post">
+    <div>
+        <label for="nom">nom:</label>
+        <input id="nom" name="nom" type="text">
+    </div>
+    <div>
+        <label for="prenom">prenom:</label>
+        <input id="prenom" name="prenom" type="text">
+    </div>
+    <div>
+        <label for="age">age:</label>
+        <input id="age" name="age" type="number">
+    </div>
+    <div>
+        <label for="mail">email:</label>
+        <input id="mail" name="mail" type="text">
+    </div>
+    <button type="submit">valider</button>
+</form>
+</body>
+</html>

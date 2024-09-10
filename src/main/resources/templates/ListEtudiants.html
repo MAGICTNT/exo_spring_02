@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <span th:replace="~{/composant/bootstrapImports :: bootstrapImports}"></span>
+
+</head>
+<body>
+<header>
+    <span th:replace="~{/composant/buttonAccueil :: buttonAccueil}"></span>
+    <div th:each="e : ${etudiants}">
+        <span th:text="${e.getNom()}"></span>
+        <span th:text="${e.getPrenom()}"></span>
+         <button class="btn btn-primary">
+             <a th:href="@{/detail/{id}(id=${e.getId()})}" class="text-white"> voir details</a>
+         </button>
+    </div>
+    <p th:if="${etudiants.isEmpty()}">List vide</p>
+
+</header>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <span th:replace="~{/composant/bootstrapImports :: bootstrapImports}"></span>
+
+</head>
+<body>
+<header>
+  <nav>
+      <span th:replace="~{/composant/buttonAccueil :: buttonAccueil}"></span>
+        <p>Nom : <span th:text="${etudiant.getNom()}"></span> </p>
+        <p>Prenom : <span th:text="${etudiant.getPrenom()}"></span> </p>
+        <p>Age : <span th:text="${etudiant.getAge()}"></span> </p>
+        <p>Tél : <span th:text="${etudiant.getEmail()}"></span> </p>
+      <button type="button" class="btn btn-success"><a class="text-white" th:href="@{/list}">retour</a></button>
+
+  </nav>
+</header>
+<section>
+<!--  tout les information de létudient-->
+</section>
+</body>
+</html>

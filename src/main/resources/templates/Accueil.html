@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <span th:replace="~{/composant/bootstrapImports :: bootstrapImports}"></span>
+</head>
+<body>
+<header>
+  <nav>
+    <button type="button" class="btn btn-primary" ><a class="text-white" th:href="@{/list}">list</a></button>
+      <button type="button" class="btn btn-secondary"><a class="text-white" th:href="@{/inscription}">Inscription</a></button>
+    <button type="button" class="btn btn-success"><a class="text-white" th:href="@{/list}">Recherchz</a></button>
+
+  </nav>
+</header>
+</body>
+</html>
