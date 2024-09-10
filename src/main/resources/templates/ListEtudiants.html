@@ -11,12 +11,19 @@
 <body>
 <header>
     <span th:replace="~{/composant/buttonAccueil :: buttonAccueil}"></span>
+    <p th:text="${message}"></p>
     <div th:each="e : ${etudiants}">
         <span th:text="${e.getNom()}"></span>
         <span th:text="${e.getPrenom()}"></span>
          <button class="btn btn-primary">
              <a th:href="@{/detail/{id}(id=${e.getId()})}" class="text-white"> voir details</a>
          </button>
+        <button class="btn btn-secondary">
+             <a th:href="@{/update/{id}(id=${e.getId()})}" class="text-white"> mettre a jour</a>
+         </button>
+        <button class="btn btn-danger">
+            <a th:href="@{/delete/{id}(id=${e.getId()})}" class="text-white"> supprimer</a>
+        </button>
     </div>
     <p th:if="${etudiants.isEmpty()}">List vide</p>
 

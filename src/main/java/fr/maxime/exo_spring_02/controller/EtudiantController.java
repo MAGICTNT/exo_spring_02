@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -34,6 +35,7 @@ public class EtudiantController {
     @RequestMapping("/list")
     public String listEtudiant(Model model) {
         model.addAttribute("etudiants", etudiantService.getAllEtudiants());
+        model.addAttribute("message","Liste de tout les étudiant");
         return "ListEtudiants";
     }
 
@@ -75,6 +77,29 @@ public class EtudiantController {
             return "DetailEtudiant";
         }
         return "DetailEtudiant";
+    }
+
+    @RequestMapping("/delete/{idContact}")
+    public String deleteContact(Model model, @PathVariable("idContact") UUID id) {
+        Etudiant etudiant = etudiantService.getEtudiantById(id);
+        if (etudiant != null) {
+            etudiantService.deleteEtudiant(etudiant);
+            List<Etudiant> listEtudiant = etudiantService.getAllEtudiants();
+            model.addAttribute("etudiants", listEtudiant);
+            model.addAttribute("message","suppression réussi");
+            return "ListEtudiants";
+        }
+        return "ListEtudiants";
+    }
+
+    @RequestMapping("/update/{idContact}")
+    public String updateContact(Model model, @PathVariable("idContact") UUID id) {
+        Etudiant etudiant = etudiantService.getEtudiantById(id);
+        if (etudiant != null) {
+            model.addAttribute("etudiant", etudiant);
+            return "updateEtudiant";
+        }
+        return "updateEtudiant";
     }
 
     @RequestMapping("/detail/name{etudiantName}")

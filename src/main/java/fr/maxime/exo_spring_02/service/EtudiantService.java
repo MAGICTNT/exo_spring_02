@@ -36,4 +36,21 @@ public class EtudiantService {
         listEtudiants.put(newEtudiant.getId(), newEtudiant);
         return newEtudiant;
     }
+
+    public Etudiant updateEtudiant(UUID id, Etudiant etudiant) {
+        Etudiant existingEtudiant = listEtudiants.get(id);
+        if (existingEtudiant!=null) {
+            existingEtudiant.setNom(etudiant.getNom());
+            existingEtudiant.setPrenom(etudiant.getPrenom());
+            existingEtudiant.setAge(etudiant.getAge());
+            existingEtudiant.setEmail(etudiant.getEmail());
+            return existingEtudiant;
+        }
+        return null;
+
+    }
+
+    public boolean deleteEtudiant(Etudiant etudiant) {
+        return listEtudiants.remove(etudiant.getId())!=null;
+    }
 }
