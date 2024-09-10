@@ -4,9 +4,7 @@ import fr.maxime.exo_spring_02.model.Etudiant;
 import fr.maxime.exo_spring_02.service.EtudiantService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -89,9 +87,25 @@ public class EtudiantController {
         return "DetailEtudiant";
     }
 
+
     @RequestMapping("/recherche")
-    public String recherche(Model model) {
-        model.addAttribute("etudiants", etudiantService.getAllEtudiants());
+    public String contactForm(Model model){
+        model.addAttribute("etudiant", new Etudiant());
         return "RechercheEtudiant";
     }
+    @PostMapping("/recherche/name")
+    public String submitContact(@ModelAttribute("name") String name){
+        Etudiant etudiantSearch = etudiantService.getEtudiantByName(name);
+        System.out.println(etudiantSearch);
+        if(etudiantSearch != null){
+            return "redirect:/detail/name" + etudiantSearch.getNom();
+        }
+        else {
+            return "redirect:/recherche";
+        }
+//        if(contact != null){
+//
+//        }
+    }
+
 }
