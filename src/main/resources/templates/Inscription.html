@@ -15,25 +15,32 @@
 
 </header>
 <!-- formulaire et redirection vers la liste -->
-<form action="/inscription/newEtudiant" method="post">
+<form th:action="@{/inscription}" th:object="${etudiant}" method="post">
     <div>
         <label for="nom">nom:</label>
-        <input id="nom" name="nom" type="text">
+        <input id="nom" name="nom" type="text" th:field="*{nom}">
+        <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+
     </div>
     <div>
         <label for="prenom">prenom:</label>
-        <input id="prenom" name="prenom" type="text">
+        <input id="prenom" name="prenom" type="text" th:field="*{prenom}">
+        <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
+
     </div>
     <div>
         <label for="age">age:</label>
-        <input id="age" name="age" type="number">
+        <input id="age" name="age" type="number" th:field="*{age}">
+        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+
     </div>
     <div>
-        <label for="mail">email:</label>
-        <input id="mail" name="mail" type="text">
+        <label for="email">email:</label>
+        <input id="email" name="email" type="text" th:field="*{email}">
     </div>
 
     <button type="submit">valider</button>
 </form>
+
 </body>
 </html>
