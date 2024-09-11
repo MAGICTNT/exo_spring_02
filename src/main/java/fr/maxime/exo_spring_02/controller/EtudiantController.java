@@ -132,5 +132,15 @@ public class EtudiantController {
 //
 //        }
     }
+    @PostMapping("/update")
+    public String updateEtudiant(Model model, @ModelAttribute("etudiant") Etudiant etudiant) {
+        Etudiant updateEtudiant = etudiantService.updateEtudiant(etudiant.getId() , etudiant);
+        if (updateEtudiant != null) {
+            model.addAttribute("etudiants", etudiantService.getAllEtudiants());
+            return "ListEtudiants";
+        }
+        System.out.println(etudiant);
+        return "updateEtudiant";
+    }
 
 }

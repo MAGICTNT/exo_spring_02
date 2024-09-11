@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,21 +13,22 @@
     <button type="submit">rechercher</button>
 </form>
 <form th:action="@{/update}" th:object="${etudiant}" method="post">
+    <input type="hidden" th:field="*{id}">
     <div>
         <label for="nom">nom:</label>
-        <input th:value="${etudiant.getNom()}" id="nom" name="nom" type="text">
+        <input th:value="${etudiant.getNom()}" id="nom" name="nom" type="text" th:field="*{nom}">
     </div>
     <div>
         <label for="prenom">prenom:</label>
-        <input th:value="${etudiant.getPrenom()}" id="prenom" name="prenom" type="text">
+        <input th:value="${etudiant.getPrenom()}" id="prenom" name="prenom" type="text" th:field="*{prenom}">
     </div>
     <div>
         <label for="age">age:</label>
-        <input th:value="${etudiant.getAge()}" id="age" name="age" type="number">
+        <input th:value="${etudiant.getAge()}" id="age" name="age" type="number" th:field="*{age}">
     </div>
     <div>
         <label for="mail">email:</label>
-        <input th:value="${etudiant.getEmail()}" id="mail" name="mail" type="text">
+        <input th:value="${etudiant.getEmail()}" id="mail" name="mail" type="text" th:field="*{email}">
     </div>
 
     <button type="submit">valider</button>
